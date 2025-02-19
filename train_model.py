@@ -7,6 +7,7 @@ import pickle
 from nltk.stem import WordNetLemmatizer
 from sklearn.preprocessing import LabelEncoder
 
+# Initialize lemmatizer
 lemmatizer = WordNetLemmatizer()
 
 # Load dataset
@@ -65,6 +66,8 @@ model = tf.keras.Sequential([
 
 model.compile(loss="categorical_crossentropy", optimizer="adam", metrics=["accuracy"])
 model.fit(X_train, y_train, epochs=200, batch_size=5, verbose=1)
+
+# Save trained model
 model.save("health_assistant_model.h5")
 
-print("Model trained successfully!")
+print("✅ Model trained and saved as 'health_assistant_model.h5' successfully!")
