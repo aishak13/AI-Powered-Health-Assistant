@@ -1,0 +1,7 @@
+flask
+tensorflow
+nltk
+numpy
+scikit-learn
+pickle
+requests
