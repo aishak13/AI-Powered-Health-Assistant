@@ -1,0 +1,19 @@
+{
+    "intents": [
+        {
+            "tag": "fever",
+            "patterns": ["I have a fever", "Feeling hot", "High temperature"],
+            "responses": ["You may have an infection. Stay hydrated and take rest.", "Consider taking paracetamol and monitor your temperature."]
+        },
+        {
+            "tag": "headache",
+            "patterns": ["I have a headache", "Pain in my head", "Severe headache"],
+            "responses": ["It could be due to stress, dehydration, or migraine. Try drinking water and resting.", "If pain persists, consult a doctor."]
+        },
+        {
+            "tag": "cold",
+            "patterns": ["Runny nose", "Sneezing", "Cough and cold"],
+            "responses": ["You may have a common cold. Stay warm and drink fluids.", "Try taking vitamin C and rest well."]
+        }
+    ]
+}
