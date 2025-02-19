@@ -1,24 +1,33 @@
 import os
+import random
+import json
+import pickle
+import numpy as np
+import tensorflow as tf
+import nltk
+from nltk.stem import WordNetLemmatizer
+from flask import Flask, request, jsonify
 
 # Install required dependencies
 os.system("pip install --upgrade pip")
 os.system("pip install streamlit flask tensorflow nltk numpy scikit-learn requests")
 
-from flask import Flask, request, jsonify
-import nltk
-import numpy as np
-import pickle
-import tensorflow as tf
-from nltk.stem import WordNetLemmatizer
-
 lemmatizer = WordNetLemmatizer()
 
 # Load trained model
-model = tf.keras.models.load_model("health_assistant_model.h5")
+if os.path.exists("health_assistant_model.h5"):
+    model = tf.keras.models.load_model("health_assistant_model.h5")
+    print("✅ Model loaded successfully!")
+else:
+    print("❌ Model file not found! Train the model first.")
 
 # Load words and classes
 words = pickle.load(open("words.pkl", "rb"))
 classes = pickle.load(open("classes.pkl", "rb"))
+
+# Load intents
+with open("intents.json", "r") as file:
+    intents = json.load(file)
 
 def clean_sentence(sentence):
     sentence_words = nltk.word_tokenize(sentence)
