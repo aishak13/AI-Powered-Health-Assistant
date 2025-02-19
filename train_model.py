@@ -7,7 +7,6 @@ import pickle
 from nltk.stem import WordNetLemmatizer
 from sklearn.preprocessing import LabelEncoder
 
-# Initialize lemmatizer
 lemmatizer = WordNetLemmatizer()
 
 # Load dataset
