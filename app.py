@@ -1,3 +1,9 @@
+import os
+
+# Install required dependencies
+os.system("pip install --upgrade pip")
+os.system("pip install streamlit flask tensorflow nltk numpy scikit-learn requests")
+
 from flask import Flask, request, jsonify
 import nltk
 import numpy as np
