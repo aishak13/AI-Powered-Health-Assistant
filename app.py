@@ -37,20 +37,18 @@ def predict_class(sentence):
     return_list = [{"intent": classes[r[0]], "probability": str(r[1])} for r in results]
     return return_list
 
-def get_response(intent_list, intents_json):
-    tag = intent_list[0]["intent"]
-    for intent in intents_json["intents"]:
-        if intent["tag"] == tag:
-            return random.choice(intent["responses"])
-    return "I'm sorry, I don't understand. Please consult a doctor."
-
 app = Flask(__name__)
 
 @app.route("/chat", methods=["POST"])
 def chatbot_response():
     user_input = request.json["message"]
     predicted_intent = predict_class(user_input)
-    response = get_response(predicted_intent, intents)
+    response = "Sorry, I don't understand."
+    
+    for intent in intents["intents"]:
+        if intent["tag"] == predicted_intent[0]["intent"]:
+            response = random.choice(intent["responses"])
+    
     return jsonify({"response": response})
 
 if __name__ == "__main__":
